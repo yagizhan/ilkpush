@@ -3,43 +3,70 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    int a = 0;
+    public float walkSpeed;
+    public float runSpeed;
+    public bool isDead;
+    public GameObject wepons; // Ufak bir not: Ýngilizce "weapons" olarak yazýlýr :)
 
-    // Update is called once per frame
-    public float speed;
     void Update()
     {
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    transform.position = transform.position + Vector3.forward * .1f;
-        //} else if (Input.GetKey(KeyCode.S)) 
-        //{ 
-        //    transform.position = transform.position - Vector3.forward * .1f;
-        //}
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    transform.position = transform.position + Vector3.forward * .1f;
-        //}
-        //else if (Input.GetMouseButtonUp(1)) 
-        //{
-        //    transform.position = transform.position - Vector3.forward * .1f;
-        //}
-
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    transform.position += Vector3.forward * speed * Time.deltaTime;
-        //}
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    transform.position += Vector3.back * speed * Time.deltaTime;
-        //}
-        if (Keyboard.current.wKey.isPressed)
+        if (isDead)
         {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
+            return;
         }
-        if (Keyboard.current.sKey.isPressed)
+
+        CheckOtherInputs();
+
+        MovePlayer(Hizimiz(), Yon());
+    }
+
+    float Hizimiz()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            transform.position += Vector3.back * speed * Time.deltaTime;
+            return runSpeed;
+        }
+        return walkSpeed;
+    }
+
+    Vector3 Yon()
+    {
+        Vector3 yon1 = Vector3.zero;
+
+        if (Keyboard.current.wKey.isPressed) yon1 += Vector3.forward;
+        if (Keyboard.current.sKey.isPressed) yon1 += Vector3.back;
+        if (Keyboard.current.aKey.isPressed) yon1 += Vector3.left;
+        if (Keyboard.current.dKey.isPressed) yon1 += Vector3.right;
+
+        return yon1.normalized;
+    }
+
+    void MovePlayer(float speed, Vector3 yon)
+    {
+        transform.position += yon * speed * Time.deltaTime;
+    }
+
+    void CheckOtherInputs()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            a += 1;
+            print(a);
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            a -= 1;
+            print(a);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            wepons.SetActive(true);
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            wepons.SetActive(false);
         }
     }
 }
