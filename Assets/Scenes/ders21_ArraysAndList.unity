@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829336148}
   - component: {fileID: 829336147}
+  - component: {fileID: 829336149}
   m_Layer: 0
   m_Name: ArraysAndList
   m_TagString: Untagged
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829336146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ce1e39417042be43854596636c4e91c, type: 3}
   m_Name: 
@@ -291,6 +292,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &829336149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829336146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c993a12bff68d04f9796296bff1b584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArrayAndList
+  enemyPreFabs: {fileID: -5766646637581736618, guid: 3b0b42fc0f4a1df4c8f071431b7466c1, type: 3}
+  enemyCaount: 10
+  enemies: []
+  spacing: 2
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0

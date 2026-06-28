@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+   
     private EnemyManager _enemyManager;
     public void StartEnemy(EnemyManager enemyManager)
     {
